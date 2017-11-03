@@ -11,7 +11,7 @@ import counter from './reducers';
 import { INCREMENT, DECREMENT, CLEAR } from './actions';
 
 /* eslint-disable no-underscore-dangle */
-const store = createStore(counter,
+export const store = createStore(counter,
   window.__REDUX_DEVTOOLS_EXTENSION__ &&
   window.__REDUX_DEVTOOLS_EXTENSION__());
 /* eslint-enable */

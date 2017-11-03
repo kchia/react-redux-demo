@@ -10,7 +10,7 @@ const Counter = ({ value, onIncrement, onDecrement, onClear }) => {
 
   return (
     <div>
-      <h1> Value: {value} </h1>
+      <h1> Value: {value.num} </h1>
       <button onClick={onIncrement}> + </button>
       <button onClick={onDecrement}> - </button>
       <button onClick={onClear}> Clear </button><br />

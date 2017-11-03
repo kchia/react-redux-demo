@@ -1,5 +1,5 @@
 // reducers/index.js
-import { INCREMENT, DECREMENT } from '../actions';
+import { INCREMENT, DECREMENT, CLEAR } from '../actions';
 
 const initialState = 0;
 export default (state = initialState, action) => {
@@ -8,6 +8,8 @@ export default (state = initialState, action) => {
       return state + 1;
     case DECREMENT:
       return state - 1;
+    case CLEAR:
+      return initialState;
     default:
       return state;
   }

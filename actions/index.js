@@ -23,12 +23,4 @@
 export const INCREMENT = 'counter/INCREMENT';
 export const DECREMENT = 'counter/DECREMENT';
 export const CLEAR = 'counter/CLEAR';
-export const INCREMENTBY = 'counter/INCREMENTBY';
-
-export const incrementBy = (incrementByNum) => {
-  console.log(`Incrementing value by ${incrementByNum}`);
-  return {
-    type: INCREMENTBY,
-    incrementByNum
-  }
-};
+export const INCREMENT_BY = 'counter/INCREMENT_BY';

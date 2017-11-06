@@ -1,11 +1,34 @@
 // reducers/index.js
-import { INCREMENT, DECREMENT, CLEAR, INCREMENTBY } from '../actions';
+import { 
+  INCREMENT, 
+  DECREMENT, 
+  CLEAR, 
+  INCREMENT_BY 
+} from '../actions/index.js';
 
-const initialState = {
+const DEFAULT_STATE = {
   num: 0
 };
 
-export default (state = initialState, action) => {
+const increment = (state, action) => Object.assign({}, state, { num: state.num + 1 });
+
+const decrement = (state, action) => Object.assign({}, state, { num: state.num - 1 });
+
+const incrementBy = (state, action) => Object.assign({}, state, { num: state.num + action.payload });
+
+// the dispatch function
+// needs to take care of default state
+// needs to handle action if it does not know what action is with default:
+
+// actions have types and payloads
+// flux standard action
+// {
+//   type: string,
+//   payload: ,
+//   error: ,
+//   metadata: 
+// }
+const rootReducer = (state = DEFAULT_STATE, action) => {
 
   // Reducers are functions that act on an action's type.
   // They could be written as a set of if-else statements, 
@@ -23,29 +46,25 @@ export default (state = initialState, action) => {
 
       // Object.assign() - creates a fresh copy of an object, 
       // bringing over all properties from the original object without referencing it
-      return Object.assign({}, state, {
-        num: state.num + 1
-      });
+      return increment(state, action);
 
     case DECREMENT:
       // state.num  = state.num - 1;
       // return state;
-      return Object.assign({}, state, {
-        num: state.num - 1
-      });
+      return decrement(state, action);
 
     case CLEAR:
-      return initialState;
+      return DEFAULT_STATE;
 
-    case INCREMENTBY:
+    case INCREMENT_BY:
       // state.num = state.num + action.incrementByNum;
       // return state;
-      return Object.assign({}, state, {
-        num: state.num + action.incrementByNum
-      });
+      return incrementBy(state, action);
 
     // The most basic reducer just returns the original state:
     default:
       return state;
   }
 };
+
+export default rootReducer;
